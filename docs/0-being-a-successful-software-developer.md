@@ -11,11 +11,11 @@ If you are here reading this, then it is likely because you have a goal you are 
 No matter what your motivation is, to succeed in this field you need to build a strong foundation by understanding not just how to write code, but more importantly understanding the way of thinking that is involved in creating code and computer programs. While this book teaches programming using Java, on a bigger picture level it is only using Java to teach how to program. To be successful you should focus on logical thinking, such as how to solve problems step by step and understanding algorithms instead of memorizing syntax. Different languages have different syntax, but at their heart they all use the same basic structures to operate. 
 
 ## Learning Objectives
-- Realistic Expectations
-- Plan First
-- What is Object-Oriented Programming
-- Tools of the Trade
-- Never Stop Learning
+- [Realistic Expectations](#realistic-expectations)
+- [Plan First](#plan-first)
+- [What is Object-Oriented Programming](#what-is-object-oriented-programming)
+- [Tools of the Trade](#tools-of-the-trade)
+- [Never Stop Learning](#never-stop-learning)
 
 # Realistic Expectations
 
