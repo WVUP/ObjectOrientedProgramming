@@ -1,7 +1,7 @@
 # Site Settings
 title: "Object-Oriented Programming"
 description: "OER Object-Oriented Programming Chapters"
-theme: jekyll-theme-architect # High-contrast, highly readable layout
+theme: jekyll-theme-slate
 
 # Markdown Processor Settings
 kramdown:
