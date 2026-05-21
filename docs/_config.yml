@@ -1,0 +1,10 @@
+# Site Settings
+title: "Object-Oriented Programming"
+description: "OER Object-Oriented Programming Chapters"
+theme: jekyll-theme-architect # High-contrast, highly readable layout
+
+# Markdown Processor Settings
+kramdown:
+  input: GFM                 # Uses GitHub Flavored Markdown
+  auto_ids: true             # Automatically generates header IDs for anchor links
+  hard_wrap: false
