@@ -6,3 +6,4 @@
 - [Testing](https://wvup.github.io/ObjectOrientedProgramming/2-testing)
 - [Defensive Programming](https://wvup.github.io/ObjectOrientedProgramming/3-defensive-programming)
 - [Lambdas and Streams](https://wvup.github.io/ObjectOrientedProgramming/4-lambdas-and-streams)
+- [Inheritance](https://wvup.github.io/ObjectOrientedProgramming/5-inheritance)
