@@ -52,15 +52,15 @@ for writing software. They are abstraction, encapsulation, inheritance, and poly
 features allow an application to represent real-world things in software effectively and enable the creation of modular, reusable, and extensible code.
 
 ## Learning Objectives
-- Abstraction
-- Encapsulation
-- Object Inheritance
-- Polymorphism
-- Avoiding Duplication
-- Casting
-- Overrides
-- Comparing Objects
-- Advanced Topics
+- [Abstraction](#abstraction)
+- [Encapsulation](#encapsulation)
+- [Object Inheritance](#object-inheritance)
+- [Polymorphism](#polymorphism)
+- [Inheritance and the DRY Principle](#inheritance-and-the-dry-principle)
+- [Casting](#casting)
+- [Overrides](#overrides)
+- [Comparing Objects](#comparing-objects)
+- [Advanced Topics](#advanced-topics)
 
 # Abstraction
 
