@@ -8,7 +8,7 @@ A simple example can be seen with what was described earlier about abstraction w
 
 Without Inheritance
 <caption><strong>Figure 1: Student class diagram</strong></caption>
-```mermaid
+<pre class="mermaid">
 classDiagram
     class Student
     Student: -String firstName
@@ -38,7 +38,7 @@ classDiagram
     Student: +getAdvisor()
     Student: +setAdvisor(advisor)
     Student: +getGPA()
-```
+</pre>
 
 # Introduction
 
