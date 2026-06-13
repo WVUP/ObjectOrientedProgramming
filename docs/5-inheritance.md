@@ -162,7 +162,7 @@ A simple example can be seen with what was described earlier about ***abstractio
 <br />
 <caption><strong>Figure 1: Student Class Diagram</strong></caption>
 
-```mermaid
+<pre class="mermaid">
 classDiagram
     class Student
     Student: -String firstName
@@ -171,7 +171,7 @@ classDiagram
     Student: -Address address
     Student: -char race
     Student: -char gender
-    Student: -ArrayList<Course> transcript
+    Student: -ArrayList&lt;Course&gt; transcript
     Student: -String degree
     Student: -Professor advisor
     Student: +Student(firstName, lastName, birthDay, address, race, transcript, advisor)
@@ -192,13 +192,12 @@ classDiagram
     Student: +getAdvisor()
     Student: +setAdvisor(advisor)
     Student: +getGPA()
-```
-
+</pre>
 
 <br />
 <caption><strong>Figure 2: Driver Class Diagram</strong></caption>
 
-```mermaid
+<pre class="mermaid">
 classDiagram
     class Driver
     Driver: -String firstName
@@ -232,7 +231,7 @@ classDiagram
 	Driver: +addRestriction(restriction)
 	Driver: +removeRestriction(restriction)
 	Driver: +getRestrictions()
-```
+</pre>
 
 While there are a few differences, it's obvious that there is a lot of duplication between these two classes. While it is unlikely to have an application that would need these exact objects, it shows how much duplication can sometimes exist. Creating these would require declaring several identical fields, and with each field the corresponding accessor and mutator methods, along with all validation logic for each. This works, but it is clearly inefficient.
 
@@ -243,7 +242,7 @@ letting the two classes only add or change what's unique to them.
 <br />
 <caption><strong>Figure 3: Person Superclass Diagram</strong></caption>
 
-```mermaid
+<pre class="mermaid">
 classDiagram
     class Person
     Person<|-- Student
@@ -295,7 +294,7 @@ classDiagram
 		+removeRestriction(restriction)
 		+getRestrictions()		
 	}
-```
+</pre>
 
 Doing this provides a simple way to write this common code once and re-use it. These classes
 are now "related" to each other through inheritance, in what is known as an "is-a" relationship. In this example, a *Student* ***is-a*** *Person*, with student specific things added, and a *Driver* ***is-a*** *Person*, with driver specific things added. The things that are shared between them were moved to a new class and that class is re-used through inheritance instead of being rewritten.
@@ -393,7 +392,7 @@ games one of the players is also the dealer. The dealer has a deck of cards and 
 
 <caption><strong>Figure 4: A Card UML Class diagram</strong></caption>
 
-```mermaid
+<pre class="mermaid">
 	classDiagram
 		class Card
 			Card: -Suit suit
@@ -407,11 +406,11 @@ games one of the players is also the dealer. The dealer has a deck of cards and 
 			Card: +isVisible()
 			Card: +show()
             Card: +hide()
-```
+</pre>
 
 <caption><strong>Figure 5: A Player superclass and a Dealer subclass UML Class diagram</strong></caption>
 
-```mermaid
+<pre class="mermaid">
 classDiagram
 	class Player
 		Player<|--Dealer
@@ -429,7 +428,7 @@ classDiagram
 				+shuffle()
 				+deal()
 			}	
-```
+</pre>
 
 <section class="callout info">
 Here, <i>Dealer</i> <i><b>is-a</b></i> <i>Player</i>, and <i><b>has-a</b></i> <i>Deck</i>, which itself <i><b>has-a</b></i> collection of <i>Card</i> objects.
@@ -447,7 +446,7 @@ can be a subclass of one, and a superclass to one or more other classes.
 Consider this example:
 <caption><strong>Figure 6: A UML Class diagram representing part of the hierarchy of the Animal Kingdom</strong></caption>
 
-```mermaid
+<pre class="mermaid">
 classDiagram
     class Animal
     Animal<|-- Mammal
@@ -467,7 +466,7 @@ classDiagram
     Songbird<|-- Thrush
     Thrush<|-- Wood Thrush
     Thrush<|-- Hermit Thrush
-```
+</pre>
 
 <section class="callout info">
 While Java doesn't have a limit to the depth of a class hierarchy, the developer still needs to keep track of everything mentally. Use the level of depth that makes sense for the application, and don't go so far that you cannot keep track of what is where.
@@ -510,14 +509,14 @@ What this ultimately means is every class in Java ultimately inherits from the *
 
 <caption><strong>Figure 7: A UML Class diagram representing how all classes in Java ultimately inherit from the <i>Object</i> class</strong></caption>
 
-```mermaid
+<pre class="mermaid">
 classDiagram
 	class Object
 		Object<|--Animal
 		Object<|--Person
 		Object<|--Player
 		Object<|--Card
-```
+</pre>
 
 This being the case, every object in Java inherits the *Object* class’s public methods, known as the object's ***API (Application Programming Interface)***. Many of these are useful in providing common capabilities of all objects in Java. One of the most used and most useful is the *Object* *toString()* method. Every object in Java has this (and a few others) because they are inherited from the *Object* class.
 
@@ -1037,7 +1036,7 @@ same signature in the class hierarchy.
 
 <caption><strong>Figure: UML Inheritance Class diagram showing a method override</strong></caption>
 
-```mermaid
+<pre class="mermaid">
 classDiagram
 	class Object
 		Object<|--Car
@@ -1045,7 +1044,7 @@ classDiagram
 		class Car{
 				+toString()
 			}
-```
+</pre>
 
 Take the aforementioned *toString()* method as an example. If an object instance were declared like this:
 
