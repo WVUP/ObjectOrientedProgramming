@@ -17,7 +17,7 @@ classDiagram
     Student: -Address address
     Student: -char race
     Student: -char gender
-    Student: -ArrayList<Course> transcript
+    Student: -ArrayList&lt;Course&gt; transcript
     Student: -String degree
     Student: -Professor advisor
     Student: +Student(firstName, lastName, birthDay, address, race, transcript, advisor)
