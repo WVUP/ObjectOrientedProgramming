@@ -1,6 +1,7 @@
 # Module 5: Inheritance
 
 > "Methods that use references to base classes must be able to use objects of derived classes without knowing it."
+> 
 > *Liskov Substitution Principle*
 
 One of the key features of ***Object-Oriented Programming*** is inheritance. ***Inheritance*** is a mechanism that allows a new class to be based on an existing class, inheriting its attributes and behaviors. The derived class can add new functionality or ***override***, or replace, the inherited object's functionality. In doing so, the ***derived class*** becomes a more specific version of the class it inherits from. Inheritance supports ***code reuse***, facilitates ***polymorphism***, and models ***hierarchical relationships*** between classes, enabling the creation of more specialized or generalized classes from existing ones. 
