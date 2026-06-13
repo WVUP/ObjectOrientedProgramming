@@ -208,8 +208,8 @@ classDiagram
     Driver: -char gender
     Driver: -int height
 	Driver: -int weight
-	Driver: -ArrayList<Endorsement> endorsements
-	Driver: -ArrayList<Restriction> restrictions
+	Driver: -ArrayList&lt;Endorsement&gt; endorsements
+	Driver: -ArrayList&lt;Restriction&gt; restrictions
 	Driver: +Driver(firstName, lastName, birthDay, address, race, gender, height, weight)
     Driver: +getFirstName()
     Driver: +setFirstName(firstName)
@@ -265,7 +265,7 @@ classDiagram
     Person: +getGender()
     Person: +setGender(gender)
     class Student{
-	    -ArrayList<Course> transcript
+	    -ArrayList&lt;Course&gt; transcript
 	    -String degree
 	    -Professor advisor
 	    +Student(firstName, lastName, birthDay, address, race, transcript, advisor)
@@ -280,8 +280,8 @@ classDiagram
 	class Driver{
 		-int height
 		-int weight
-		-ArrayList<Endorsement> endorsements
-		-ArrayList<Restriction> restrictions
+		-ArrayList&lt;Endorsement&gt; endorsements
+		-ArrayList&lt;Restriction&gt; restrictions
 		+Driver(firstName, lastName, birthDay, address, race, gender, height, weight)
 		+getHeight()
 		+setHeight(inches)
@@ -344,7 +344,7 @@ Since a subclass gets everything in the superclass for free, it is important tha
  */
 public class Student extends Person
 {
-  private ArrayList<Course> transcript;
+  private ArrayList&lt;Course&gt; transcript;
   private Professor advisor;
 
   /**
@@ -366,7 +366,7 @@ public class Student extends Person
 				   Address address, 
 				   char race, 
 				   char gender, 
-				   ArrayList<Course> courses, 
+				   ArrayList&lt;Course&gt; courses, 
 				   Professor advisor)
 	{
 		// First, initialize the *Person* parts of the class
@@ -414,7 +414,7 @@ games one of the players is also the dealer. The dealer has a deck of cards and 
 classDiagram
 	class Player
 		Player<|--Dealer
-		Player: -ArrayList<Card> hand
+		Player: -ArrayList&lt;Card&gt; hand
 		Player: -String name
 		Player: -int chips
 		Player: +receiveCard(card)
@@ -424,7 +424,7 @@ classDiagram
 		Player: +scoreHand()
 		Player: +showAllCards()
 		class Dealer{
-				-ArrayList<Card> deck
+				-ArrayList&lt;Card&gt; deck
 				+shuffle()
 				+deal()
 			}	
@@ -677,7 +677,7 @@ public class Main
   public static void main(String[] args) 
   {
     // Any object that "is-a" Player can be added to the players list
-    ArrayList<Player> players = new ArrayList<>();
+    ArrayList&lt;Player&gt; players = new ArrayList&lt;&gt;();
     
     Player player = new Player();
     Dealer dealer = new Dealer();
@@ -999,7 +999,7 @@ A ***package*** is a logical organization of related classes into a ***namespace
 ```java 
 package java.util;
 
-public class ArrayList<T>
+public class ArrayList&lt;T&gt;
 {
   ...
 }
