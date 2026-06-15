@@ -7,3 +7,4 @@
 - [Defensive Programming](https://wvup.github.io/ObjectOrientedProgramming/3-defensive-programming)
 - [Lambdas and Streams](https://wvup.github.io/ObjectOrientedProgramming/4-lambdas-and-streams)
 - [Inheritance](https://wvup.github.io/ObjectOrientedProgramming/5-inheritance)
+- [Exception Handling and File Processing](https://wvup.github.io/ObjectOrientedProgramming/6-exception-handling-and-file-processing)
