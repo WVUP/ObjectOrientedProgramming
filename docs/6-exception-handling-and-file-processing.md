@@ -30,6 +30,8 @@ Since the return type of a method is already declared in the signature, returnin
   <figcaption class="align-center">Figure 7.1: Method signature with the throws keyword</figcaption>
 </figure>
 
+<br />
+
 A thrown exception cannot be ignored by the code expecting the return value from where the exception was first generated. To prevent this from crashing the application, any code that might throw an exception is wrapped in the try-catch or a try-catch-finally block. If everything works as expected the code in the try block runs and the code in the catch block does not. However, if there is an exception thrown, then the remaining code in the try block is skipped and the code in the catch block immediately runs. This code will try to mitigate the error so the application can either continue running or shut down gracefully. It is very common to use logging in the catch block to record details about what caused the exception.
 
 # The Exception Hierarchy
@@ -62,6 +64,8 @@ classDiagram
 <figure>
   <figcaption class="align-center">Figure 7.2: The Java Exception Hierarchy</figcaption>
 </figure>
+
+<br />
 
 The Exception class declares several methods, and all subclasses inherit these. The two most used are *getMessage()* and *printStackTrace()*. The *getMessage()* method returns the string that was supplied when the object was created and includes the specific error message the developer provided when writing the code to throw the exception. This is typically what gets logged in a catch block or printed with *System.err.println()*. The *printStackTrace()* method on the other hand will print out detailed information about the method call stack that led to the issue. This is very useful for debugging but should be avoided in code that is deployed to users.
 
