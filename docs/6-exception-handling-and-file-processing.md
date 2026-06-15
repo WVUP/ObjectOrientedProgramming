@@ -27,7 +27,7 @@ Since the return type of a method is already declared in the signature, returnin
 
 <figure>
   <img class="align-center" src="images/method_signature_with_throws_keyword.png" alt="Method signature with 'throws Exception' added">
-  <figcaption class="align-center">Figure 7.1: Method signature with the throws keyword</figcaption>
+  <figcaption class="align-center">Figure 6.1: Method signature with the throws keyword</figcaption>
 </figure>
 
 <br />
@@ -62,7 +62,7 @@ classDiagram
 </pre>
 
 <figure>
-  <figcaption class="align-center">Figure 7.2: The Java Exception Hierarchy</figcaption>
+  <figcaption class="align-center">Figure 6.2: The Java Exception Hierarchy</figcaption>
 </figure>
 
 <br />
