@@ -25,23 +25,6 @@ Exception handling in Java is a way to deal with runtime errors and unexpected e
 
 Since the return type of a method is already declared in the signature, returning an Exception requires additional syntax. To return an exception when something goes wrong but still return the expected value when things go right, the throws keyword is added to the method signature. 
 
-<pre class="mermaid">
-classDiagram
-	class Object
-	Object<|--Throwable
-	Throwable<|--Error
-	Throwable<|--Exception
-	Exception<|--CustomExceptions
-	Exception<|--RuntimeException
-	RuntimeException<|--UncheckedExceptions
-    class Exception{
-	    +getMessage()
-		+getStackTrace()
-		+printStackTrace()
-		+toString()
-	}
-</pre>
-
 <figure>
   <img class="align-center" src="images/method_signature_with_throws_keyword.png" alt="Method signature with 'throws Exception' added">
   <figcaption class="align-center">Figure 7.1: Method signature with the throws keyword</figcaption>
@@ -58,6 +41,23 @@ Java's exception hierarchy is structured under the *Throwable* class. From there
 The *Exception* class and its subclasses are used for issues the JRE may encounter when the application runs that the code can try to deal with. It is divided into two categories, checked exceptions and unchecked exceptions. Checked exceptions inherit from Exception and must be handled at compile time using try-catch or declared with ***throws***. Checked exceptions represent predictable and recoverable issues, such as file not found (*FileNotFoundException*), input/output errors (*IOException*), or database access issues (*SQLException*). These are but a very few examples of checked exception types. These are all used to handle scenarios where the program can recover from the error or take corrective actions. 
 
 The other category of exceptions are unchecked exceptions, which all inherit from *RuntimeException*. These may or may not happen at runtime and are not checked by the compiler. Unchecked exceptions often indicate programming logic errors, such as accessing a null object or invalid array indexing. Examples of unchecked exceptions include *NullPointerException*, *ArrayIndexOutOfBoundsException*, and *ArithmeticException*. As with the checked exceptions, these are but a few of the subtypes available. Unchecked exceptions typically indicate bugs in the code that should ideally be fixed rather than handled programmatically. 
+
+<pre class="mermaid">
+classDiagram
+	class Object
+	Object<|--Throwable
+	Throwable<|--Error
+	Throwable<|--Exception
+	Exception<|--CustomExceptions
+	Exception<|--RuntimeException
+	RuntimeException<|--UncheckedExceptions
+    class Exception{
+	    +getMessage()
+		+getStackTrace()
+		+printStackTrace()
+		+toString()
+	}
+</pre>
 
 <figure>
   <img class="align-center" src="https://computing.wvup.edu/bookstack/uploads/images/gallery/2026-06/image-1781533610911.png" alt="">
