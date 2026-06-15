@@ -60,7 +60,6 @@ classDiagram
 </pre>
 
 <figure>
-  <img class="align-center" src="https://computing.wvup.edu/bookstack/uploads/images/gallery/2026-06/image-1781533610911.png" alt="">
   <figcaption class="align-center">Figure 7.2: The Java Exception Hierarchy</figcaption>
 </figure>
 
