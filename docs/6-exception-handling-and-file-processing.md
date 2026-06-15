@@ -26,7 +26,7 @@ Exception handling in Java is a way to deal with runtime errors and unexpected e
 Since the return type of a method is already declared in the signature, returning an Exception requires additional syntax. To return an exception when something goes wrong but still return the expected value when things go right, the throws keyword is added to the method signature. 
 
 <figure>
-  <img class="align-center" src="https://computing.wvup.edu/bookstack/uploads/images/gallery/2026-06/image-1781533586399.png" alt="">
+  <img class="align-center" src="images/method_signature_with_throws_keyword.png" alt="Method signature with 'throws Exception' added">
   <figcaption class="align-center">Figure 7.1: Method signature with the throws keyword</figcaption>
 </figure>
 
