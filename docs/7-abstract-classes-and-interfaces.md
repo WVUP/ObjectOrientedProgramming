@@ -15,28 +15,24 @@ In these cases, when a common behavior is needed but there is no common implemen
 
 <figure>
     <pre class="mermaid">
-        classDiagram
-        
+    classDiagram
+        Shape <|-- Circle
+        Shape <|-- Square
         class Shape {
             <<abstract>>
             +area()* double
             +perimeter()* double
         }
-        
         class Circle {
             -radius : double
             +area() double
             +perimeter() double
         }
-        
         class Square {
             -sideLength : double
             +area() double
             +perimeter() double
         }
-        
-        Shape <|-- Circle
-        Shape <|-- Square
     </pre>
   <figcaption class="align-center">Figure 7.1: UML of abstract and concrete classes</figcaption>
 </figure><p>
