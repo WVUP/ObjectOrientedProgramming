@@ -342,15 +342,33 @@ classDiagram
 </pre>
 <figure>
   <img class="align-center" src="https://computing.wvup.edu/bookstack/uploads/images/gallery/2026-06/image-1781543458237.png" alt="">
-  <figcaption class="align-center">Figure 8.2: Problems with multi-class inheritance</figcaption>
-</figure><p>
+  <figcaption class="align-center">Figure 7.2: Problems with multi-class inheritance</figcaption>
+</figure>
 
 Here, if such a class hierarchy were possible and an instance of *SubClass* tried to call *method1()* there are two possible choices. Would Java run the implementation in *SuperClass1* or *SuperClass2*? There would be no way to prioritize one over the other. To avoid this, Java eliminates the problem completely by preventing multiple inheritance from classes. This is done with Java syntax by only allowing a class to directly extend one other class. 
 
 Is this a problem with interfaces though? Since interfaces have no implementation, the implementing class must provide its own override implementation.
-
 <figure>
-  <img class="align-center" src="https://computing.wvup.edu/bookstack/uploads/images/gallery/2026-06/image-1781543476530.png" alt="">
+    <pre class="mermaid">
+    classDiagram
+    
+    class Interface1 {
+        &lt;&lt;interface&gt;&gt;
+        +method1() void
+    }
+    
+    class Interface2 {
+        &lt;&lt;interface&gt;&gt;
+        +method1() void
+    }
+    
+    class MyClass {
+        +method1() void
+    }
+    
+    Interface1 <|.. MyClass
+    Interface2 <|.. MyClass
+    </pre>
   <figcaption class="align-center">Figure 8.3: Multiple inheritance using interfaces</figcaption>
 </figure><p>
 
