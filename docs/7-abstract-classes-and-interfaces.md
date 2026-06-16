@@ -418,7 +418,7 @@ The main application (IntelliJ in this case) loads each plugin from a ***JAR fil
 JAR stands for Java ARchive, and is a way of building and packaging Java components so they can be distributed and shared with others.
 </section>
 
-Writing an application that supports plugins is beyond the scope of this book. For a basic working code example and accompanying article, look at the following [GitHub repository on Java plugin quickstart](https://github.com/suvodeep-pyne/java-plugin-quickstart)
+Writing an application that supports plugins is beyond the scope of this book. For a basic working code example and accompanying article, look at the following [GitHub repository on Java plugin quickstart](https://github.com/suvodeep-pyne/java-plugin-quickstart){:target="_blank"}
 
 # Advanced Topics
 
