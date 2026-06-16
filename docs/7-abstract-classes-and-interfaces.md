@@ -174,7 +174,7 @@ Because an interface does not dictate any shared implementation, they promote lo
 The *Comparable* interface shown earlier is a great example of this, with the static *Collections.sort()* method using the *Comparable* interface to sort any collection of objects, whether they are part of the Java SDK or custom objects created as part of a single project. In short, because the *Comparable.sort()* method can guarantee the objects have a *compareTo()* method, it will work for absolutely anything that has this implemented without needing to be rewritten.
 
 ## Using Interfaces
-An interface is very similar to an abstract class, but the way it is declared in a class is slightly different. Since there are no concrete methods available, an interface uses the keyword ***implements*** instead of extends. Here's an example of a class implementing the *Comparable* interface:
+An interface is very similar to an abstract class, but the way it is declared in a class is slightly different. Since there are normally no concrete methods available, an interface uses the keyword ***implements*** instead of extends. Here's an example of a class implementing the *Comparable* interface:
 
 <caption><strong>Code Example: Using the Comparable interface</strong></caption>
 
@@ -195,7 +195,7 @@ public class Shape implements Comparable<Shape>
 ```
 
 <section class="callout info">
-Comparable is using a Generic, which says this must use a class of the type defined inside the &gt&lt brackets. In this case, Comparable is being implemented only with Shape objects.
+Comparable is using a ***Generic***, which says this must use a class of the type defined inside the &gt; &lt; brackets. In this case, *Comparable* is being implemented only with *Shape* objects.
 </section>
 
 Another good example from the Java SDK of an interface with similar functionality is the ***Comparator*** interface. The *Comparator* interface allows custom sorting of objects that don’t have a natural ordering, or when you want to sort objects in an order different from their natural ordering. Consider a playing card for a card game. It will have a rank, points, and a suit. It can be useful to sort on any one of these fields. The *Comparator* interface makes this possible. 
