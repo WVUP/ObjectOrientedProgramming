@@ -24,7 +24,7 @@ This diagram represents an abstract class, Shape, with two abstract methods. Thr
 - [Abstract Classes](#abstract-classes) 
 - [Interfaces](#interfaces) 
 - [Multiple Inheritance](#multiple-inheritance) 
-- [Testing](#testing) 
+- [Interface Testing](#interface-testing) 
 - [Plugins](#plugins)
 - [Advanced Topics](#advanced-topics)
 
