@@ -324,6 +324,18 @@ Classes that implement an interface and have Javadoc can often skip writing the 
 
 Class inheritance is tightly controlled in Java, with each class only being allowed to directly inherit from one other class. This is done to prevent any contradiction between two parent classes. Imagine if two different classes implemented the exact same method and a subclass inherited from each directly. When that superclass method was called, which one would Java use? There would be no way to know which should have priority.
 
+<pre class="mermaid">
+classDiagram
+    class SubClass
+    SuperClass1 <|-- SubClass
+    SuperClass2 <|-- SubClass
+    class SuperClass1 {
+        +method1()
+    }
+    class SuperClass2 {
+        +method1()
+    }
+</pre>
 <figure>
   <img class="align-center" src="https://computing.wvup.edu/bookstack/uploads/images/gallery/2026-06/image-1781543458237.png" alt="">
   <figcaption class="align-center">Figure 8.2: Problems with multi-class inheritance</figcaption>
