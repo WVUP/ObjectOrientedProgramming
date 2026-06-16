@@ -13,31 +13,30 @@ There are cases where there will be a common, shared behavior but there is no wa
 
 In these cases, when a common behavior is needed but there is no common implementation possible, the method in question and the class must be declared as abstract. The abstract class and method are represented in UML Class Diagrams either with the class name and abstract method in *italics*, or like this:
 
-<pre class="mermaid">
-classDiagram
-    Shape <|-- Circle
-    Shape <|-- Square
-
-    class Shape {
-        &lt;&lt;abstract&gt;&gt;
-        +area() double
-        +perimeter() double
-    }
-
-    class Circle {
-        -radius : double
-        +area() double
-        +perimeter() double
-    }
-
-    class Square {
-        -sideLength : double
-        +area() double
-        +perimeter() double
-    }
-</pre>
-
 <figure>
+    <pre class="mermaid">
+    classDiagram
+        Shape <|-- Circle
+        Shape <|-- Square
+    
+        class Shape {
+            &lt;&lt;abstract&gt;&gt;
+            +area() double
+            +perimeter() double
+        }
+    
+        class Circle {
+            -radius : double
+            +area() double
+            +perimeter() double
+        }
+    
+        class Square {
+            -sideLength : double
+            +area() double
+            +perimeter() double
+        }
+    </pre>
   <figcaption class="align-center">Figure 7.1: UML of abstract and concrete classes</figcaption>
 </figure>
 
@@ -328,20 +327,19 @@ Classes that implement an interface and have Javadoc can often skip writing the 
 
 Class inheritance is tightly controlled in Java, with each class only being allowed to directly inherit from one other class. This is done to prevent any contradiction between two parent classes. Imagine if two different classes implemented the exact same method and a subclass inherited from each directly. When that superclass method was called, which one would Java use? There would be no way to know which should have priority.
 
-<pre class="mermaid">
-classDiagram
-    class SubClass
-    SuperClass1 <|-- SubClass
-    SuperClass2 <|-- SubClass
-    class SuperClass1 {
-        +method1()
-    }
-    class SuperClass2 {
-        +method1()
-    }
-</pre>
 <figure>
-  <img class="align-center" src="https://computing.wvup.edu/bookstack/uploads/images/gallery/2026-06/image-1781543458237.png" alt="">
+    <pre class="mermaid">
+    classDiagram
+        class SubClass
+        SuperClass1 <|-- SubClass
+        SuperClass2 <|-- SubClass
+        class SuperClass1 {
+            +method1()
+        }
+        class SuperClass2 {
+            +method1()
+        }
+    </pre>
   <figcaption class="align-center">Figure 7.2: Problems with multi-class inheritance</figcaption>
 </figure>
 
@@ -369,7 +367,7 @@ Is this a problem with interfaces though? Since interfaces have no implementatio
     Interface1 <|.. MyClass
     Interface2 <|.. MyClass
     </pre>
-  <figcaption class="align-center">Figure 8.3: Multiple inheritance using interfaces</figcaption>
+  <figcaption class="align-center">Figure 7.3: Multiple inheritance using interfaces</figcaption>
 </figure><p>
 
 This means if two different interfaces happened to declare the same method interface, the subclass override would still provide a clear implementation for Java to call. This means there would be no confusion about which implementation to use. Because of this, it is possible to implement multiple interfaces in Java, giving a form of multiple inheritance.
