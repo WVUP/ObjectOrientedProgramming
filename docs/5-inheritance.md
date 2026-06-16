@@ -1,57 +1,11 @@
 # Module 5: Inheritance
 
-> "Methods that use references to base classes must be able to use objects of derived classes without knowing it."
-> 
-> *Liskov Substitution Principle*
-
-One of the key features of ***Object-Oriented Programming*** is inheritance. ***Inheritance*** is a mechanism that allows a new class to be based on an existing class, inheriting its attributes and behaviors. The derived class can add new functionality or ***override***, or replace, the inherited object's functionality. In doing so, the ***derived class*** becomes a more specific version of the class it inherits from. Inheritance supports ***code reuse***, facilitates ***polymorphism***, and models ***hierarchical relationships*** between classes, enabling the creation of more specialized or generalized classes from existing ones. 
-
-A simple example can be seen with what was described earlier about abstraction with a student and a driver. Recall we said a real person has a first name, last name, date of birth, address, race, gender, height, weight, hair color, eye color, etc. and if they are in college, they’ll have a major, a list of classes they have completed (transcript), an advisor, and several other pieces of information about being in college. If they are a driver, they may have restrictions on their license or endorsements.
-
-Without Inheritance
-<caption><strong>Figure 1: Student class diagram</strong></caption>
-<pre class="mermaid">
-classDiagram
-    class Student
-    Student: -String firstName
-    Student: -String lastName
-    Student: -Date birthDay
-    Student: -Address address
-    Student: -char race
-    Student: -char gender
-    Student: -ArrayList&lt;Course&gt; transcript
-    Student: -String degree
-    Student: -Professor advisor
-    Student: +Student(firstName, lastName, birthDay, address, race, transcript, advisor)
-    Student: +getFirstName()
-    Student: +setFirstName(firstName)
-    Student: +getLastName()
-    Student: +setLastName(lastName)
-    Student: +getBirthDay()
-    Student: +getAddress()
-    Student: +setAddress(address)
-    Student: +getRace()
-    Student: +getGender()
-    Student: +setGender(gender)
-    Student: +getTranscript()
-    Student: +addCourseToTranscript(course)
-    Student: +getDegree()
-    Student: +setDegree(degree)
-    Student: +getAdvisor()
-    Student: +setAdvisor(advisor)
-    Student: +getGPA()
-</pre>
-
 # Introduction
 
 > "Methods that use references to base classes must be able to use objects of derived
 classes without knowing it."
 >
 > **Liskov Substitution Principle**
-
-There are four aspects of Object-Oriented Programming that make it such a powerful paradigm
-for writing software. They are abstraction, encapsulation, inheritance, and polymorphism. These
-features allow an application to represent real-world things in software effectively and enable the creation of modular, reusable, and extensible code.
 
 ## Learning Objectives
 - [Abstraction](#abstraction)
@@ -63,6 +17,8 @@ features allow an application to represent real-world things in software effecti
 - [Overrides](#overrides)
 - [Comparing Objects](#comparing-objects)
 - [Advanced Topics](#advanced-topics)
+
+There are four aspects of Object-Oriented Programming that make it such a powerful paradigm for writing software. They are ***abstraction***, ***encapsulation***, ***inheritance***, and ***polymorphism***. These features allow an application to represent real-world things in software effectively and enable the creation of modular, reusable, and extensible code.
 
 # Abstraction
 
@@ -145,6 +101,7 @@ public class BankAccount
   }
 }
 ```
+
 In this example, the *BankAccount* class encapsulates the balance field by making it private. The class provides public methods (*getBalance()*, *deposit()*, *withdraw()*) to access and modify the balance in a controlled manner.
 
 This encapsulation protects the internal state (*balance*) from being directly accessed or
@@ -389,8 +346,7 @@ If a class inherits from another and does not call super as the first call of it
 
 The classes that *extend* another class (known as ***subclasses*** or ***child classes***) know about the relationship, but the class being extended (known as ***superclass*** or ***parent class***) has no code to indicate the inheritance relationship and therefore no way to know about it. UML class diagrams have an arrow pointing to the parent class from the child class, which reinforces this. In Java, the class being extended (*Person* in this example) is known as the ***superclass***, and the classes inheriting from *Person* (*Student* and *Driver*) are known as ***subclasses*** of the ***superclass*** or ***child classes*** of the ***parent class***. These two terms mean the same thing.
 
-Another example of this would be an application for playing card games. In almost all card
-games one of the players is also the dealer. The dealer has a deck of cards and is responsible for shuffling the deck of cards and handing out cards to all the other players. All players will receive cards from the dealer, and based on the cards they receive they'll have a score which determines the winner. The dealer also plays the game though, so the dealer is really just a regular player that also has a deck of cards and deals the cards out to other players. Inheritance is a great solution for this problem.
+Another example of this would be an application for playing card games. In almost all card games one of the players is also the dealer. The dealer has a deck of cards and is responsible for shuffling the deck of cards and handing out cards to all the other players. All players will receive cards from the dealer, and based on the cards they receive they'll have a score which determines the winner. The dealer also plays the game though, so the dealer is really just a regular player that also has a deck of cards and deals the cards out to other players. Inheritance is a great solution for this problem.
 
 <caption><strong>Figure 4: A Card UML Class diagram</strong></caption>
 
@@ -442,8 +398,7 @@ This basic approach is used in almost all card game applications.
 
 A class can only have one direct class that it inherits from in Java. It is not possible to extend more than one class directly. This is a safety mechanism in the language. Imagine what would happen if two classes were declared as direct parent classes, and they each declared the same field but as different data types, or each declared the same method with the same signature. Which one would the subclass use in that case? Java avoids this problem altogether by only allowing one direct superclass.
 
-Classes can have as many layers as needed in the inheritance hierarchy. This means a class
-can be a subclass of one, and a superclass to one or more other classes.
+Classes can have as many layers as needed in the inheritance hierarchy. This means a class can be a subclass of one, and a superclass to one or more other classes.
 
 Consider this example:
 <caption><strong>Figure 6: A UML Class diagram representing part of the hierarchy of the Animal Kingdom</strong></caption>
@@ -478,8 +433,7 @@ Here the animal kingdom is partially represented, and several classes are both a
 
 ## The Object Class
 
-Java is considered a purely ***Object-Oriented programming language***. What that means is
-everything in Java is an object. But what does that mean, and how is that possible?
+Java is considered a purely ***Object-Oriented programming language***. What that means is everything in Java is an object. But what does that mean, and how is that possible?
 
 Every class in Java, whether it comes from the SDK or is created as part of the current project, inherits directly or indirectly from the *Object* class. If a class does not use the *extends* keyword to inherit from another specific class, then Java automatically has that class extend the Object class. So, in the previous examples, the *Person*, *Player*, *Card* and *Animal* classes all implicitly inherit from *Object*.
 
@@ -535,12 +489,9 @@ subclasses to be treated as objects of their superclass. This is a direct applic
 
 This is also known as the ***Liskov Substitution Principle***, named after Barbara Liskov. This principle states that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. In other words, if class *B* is a subclass of class *A* (*B **is-a** A*), then objects of type *A* should be substitutable with objects of type *B* without altering the correctness of the program.
 
-Any subclass should only enhance the functionality of the superclass to be more specific. It
-**can not** radically change what the superclass is intending to do. Subclasses should adhere to the same public API, which means they should implement the same public methods in a way that
-maintains the same behavior. 
+Any subclass should only enhance the functionality of the superclass to be more specific. It **can not** radically change what the superclass is intending to do. Subclasses should adhere to the same public API, which means they should implement the same public methods in a way that maintains the same behavior. 
 
-An example would be a card player object which could score the cards in the hand according to
-the rules of the card game. This player class could be extended to create a dealer as seen earlier, which would make the dealer a player that could also deal cards. The dealer's score hand method and other functionality would be identical.
+An example would be a card player object which could score the cards in the hand according to the rules of the card game. This player class could be extended to create a dealer as seen earlier, which would make the dealer a player that could also deal cards. The dealer's score hand method and other functionality would be identical.
 
 For this to work, subclasses can not require more preconditions (requirements before a method is executed) or weaken postconditions (guarantees after a method is executed). This ensures that the subclass does not impose additional constraints or fail to meet the expectations set by the superclass. This is important for allowing subclasses to be substituted where superclass instances are required or declared.
 
@@ -695,8 +646,7 @@ public class Main
 
 One of the biggest “evils” in software development in any language is writing the same code more than once. Avoiding this is known as ***the DRY principle***, which stands for Don’t Repeat Yourself. This is closely related to the concept of ***normalization*** in database design, which seeks to eliminate data redundancy.
 
-The DRY principle in practice aims to reduce redundancy and duplication of code by promoting
-the reuse of existing code and logic. One simple example of this can be seen with this *BankAccount* class. The constructor takes a parameter of an initial balance and uses the *deposit()* method, which includes business rule validation logic, to set the initial state of the object.
+The DRY principle in practice aims to reduce redundancy and duplication of code by promoting the reuse of existing code and logic. One simple example of this can be seen with this *BankAccount* class. The constructor takes a parameter of an initial balance and uses the *deposit()* method, which includes business rule validation logic, to set the initial state of the object.
 
 <caption><strong>Code Example: A <i>BankAccount</i> class that passes the <i>initialAmount</i> to the deposit method in the constructor thereby re-using the validation code in <i>deposit()</i></strong></caption>
 
@@ -778,8 +728,7 @@ across multiple parts of the application.
 - Consistency: With a single source of truth, the behavior and output of a particular logic
 remain consistent throughout the codebase.
 
-The DRY principle promotes code reuse, maintainability, and consistency by eliminating
-redundancy, while the WET principle represents the opposite approach of duplicating code. DRY is generally considered a best practice.
+The DRY principle promotes code reuse, maintainability, and consistency by eliminating redundancy, while the WET principle represents the opposite approach of duplicating code. DRY is generally considered a best practice.
 
 ## Inheritance and Avoiding Duplication
 
@@ -796,8 +745,9 @@ Earlier the ***is-a*** relationship was described. This is a way of describing t
 ```
 
 This assumes *Car* inherits from *Vehicle*, so it *is-a* vehicle, with extra car specific things added. Where are those car specific things though? The car constructor would set up the state of the object to initialize those extra things, but since vehicle doesn't know about the car specific things, they are hidden in the object instance v.
+
 <section class="callout info">
-  
+	
 ***Casting*** in Java is a way to convert or treat an object of one type as another related type as long as they are in the same object hierarchy. It is closely tied to the concept of polymorphism.
 </section>
 
@@ -809,13 +759,11 @@ Upcasting is implicitly done by the compiler when you assign a subclass object t
   
 - The term ***static*** in this context refers to object type checking done by the java compiler when it builds the application, converting the *.java* files into the *.class* files that the **Java Runtime Environment (JRE)** can execute. This is known as static because the compiler will read the source code every time in the same exact way. Thus, static data types are what the compiler is validating are compatible.
   - To work, static data types must be at the same level or higher in the same object hierarchy.
-
 - The term ***dynamic*** in this context refers to the actual object type when the application is executing, which is called the runtime.  It is known as dynamic because the application can change what it is doing based on its inputs or environment while it is executing.
   - To work, dynamic data types must be at the same level or lower in the same object hierarchy.
 </section>
 
-Upcasting is always safe because the subclass object has all the methods and fields of the
-superclass. If the parts that make a Car object are there but hidden, then they cannot be used. To use the Car specific functionality of the object v, these hidden things need to be unhidden. It is possible to do this with a process known as Downcasting, or more often just called Casting.
+Upcasting is always safe because the subclass object has all the methods and fields of the superclass. If the parts that make a Car object are there but hidden, then they cannot be used. To use the Car specific functionality of the object v, these hidden things need to be unhidden. It is possible to do this with a process known as Downcasting, or more often just called Casting.
 
 ## Downcasting
 
@@ -867,7 +815,6 @@ In Java, an ***object reference*** is a variable that stores the *memory address
 <section class="callout info">
 
   Inside any class, Java also provides the keyword ***this*** as an object to access the instance of a class in the code. The *this* variable is a reference inside the class to the instance itself.
-  
 </section>
 <br />
 <caption><strong>Code Example: Using the <i>this</i> object reference</strong></caption>
@@ -943,9 +890,7 @@ otherCar.isHoodOpen(); // Returns true, because it was opened using the myCar re
 
 # Overrides
 
-Sometimes the methods inherited from a parent class are inadequate for the child class' needs.
-When this happens, a subclass can replace the parent class' implementation of a method by
-overriding it.
+Sometimes the methods inherited from a parent class are inadequate for the child class' needs.  When this happens, a subclass can replace the parent class' implementation of a method by overriding it.
 
 <section class="callout info">
 Overrides vs. Overloads
@@ -956,9 +901,7 @@ the superclass in a subclass.
 - Overloading a method involves writing a method with the same visibility, return type, and name, but with different parameters.
 </section>
 
-Creating an ***override*** on a method is simple. If the subclass has a method with the same
-signature as the parent class, the subclass' method overrides, or replaces the parent class
-implementation. This should also have the annotation ***@Override*** directly above the method signature, like this:
+Creating an ***override*** on a method is simple. If the subclass has a method with the same signature as the parent class, the subclass' method overrides, or replaces the parent class implementation. This should also have the annotation ***@Override*** directly above the method signature, like this:
 
 <caption><strong>Code Example: The @Override annotation on a toString() method</strong></caption>
 
@@ -978,17 +921,13 @@ In this example the *toString()* method that was inherited from *Object* is repl
 
 ***Overloading*** on the other hand involves creating a method with the same return type and name, but with a different parameter list. This is often done with class constructors, although it can be done with any method. Due to the different parameters, these have a different signature and are considered separate methods. It does not matter if the methods are in the same class or a subclass.  Overloaded methods do not have an annotation.
 
-This is an important distinction because overloaded methods can all be accessed and executed
-from anywhere by simply providing the correct set of parameters for the version needed. In contrast, an overridden method is hidden from any other class except the superclass and subclass. The subclass can still access the superclass' method by using the ***super*** reference to the parent and calling the method from it (```super.methodName()```), but only the subclass can do this.
+This is an important distinction because overloaded methods can all be accessed and executed from anywhere by simply providing the correct set of parameters for the version needed. In contrast, an overridden method is hidden from any other class except the superclass and subclass. The subclass can still access the superclass' method by using the ***super*** reference to the parent and calling the method from it (```super.methodName()```), but only the subclass can do this.
 
-When overriding methods, the access modifier in the subclass cannot be more restrictive than
-in the superclass. It can be made less restrictive. For example, a *protected* method in the
-superclass can be overridden as *public* in the subclass, but it could not be overridden as private.
+When overriding methods, the access modifier in the subclass cannot be more restrictive than in the superclass. It can be made less restrictive. For example, a *protected* method in the superclass can be overridden as *public* in the subclass, but it could not be overridden as private.
 
 ## Visibility
 
-A key part of Java's encapsulation involves the access modifiers used when declaring classes,
-fields, and methods. These define what the scope, or "visibility" of the class, field, or method is. Java supports four levels of visibility: *public*, *protected*, *default*, and *private*.
+A key part of Java's encapsulation involves the access modifiers used when declaring classes, fields, and methods. These define what the scope, or "visibility" of the class, field, or method is. Java supports four levels of visibility: *public*, *protected*, *default*, and *private*.
 
 ***Public*** members are accessible from anywhere in the program and can be accessed by any other class, regardless of package. Public members of a superclass are fully inherited by subclasses and remain public in the subclass. Public access is used for API methods and classes that need to be widely available to other classes. It is also used for fields which are constant and utility methods meant for general use, such as the Collections.shuffle or Collections.sort methods. Public is also the visibility of classes that define core functionality, such as ArrayList, HashSet, or HashMap.
 
@@ -1033,8 +972,7 @@ appropriate access to superclass members while maintaining the integrity of the 
 
 ## Dynamic Method Lookup
 
-When a method of a superclass is overridden in a subclass, there are now two methods with the
-same signature in the class hierarchy.
+When a method of a superclass is overridden in a subclass, there are now two methods with the same signature in the class hierarchy.
 
 <caption><strong>Figure: UML Inheritance Class diagram showing a method override</strong></caption>
 
@@ -1061,8 +999,7 @@ First, the variable is accessed (car in the above example). The object instance 
 
 This process is repeated until a match is found, or the class hierarchy is exhausted. This is why overriding methods take precedence – they override, or replace, inherited copies by being accessed earlier in the lookup process.
 
-This lookup process has a lot to do with why Java does not allow multiple inheritance of
-superclasses. If two direct parents defined the same method and the subclass did not override it, Java would have no way of knowing which one to run.
+This lookup process has a lot to do with why Java does not allow multiple inheritance of superclasses. If two direct parents defined the same method and the subclass did not override it, Java would have no way of knowing which one to run.
 
 ## Overriding Object Methods
 
@@ -1144,19 +1081,15 @@ public class Car
 
 # Comparing Objects
 
-One very common task in developing applications is to compare two different object instances.
-This can be more challenging than it might first appear. Java does provide a couple of standard
-methods to help do this between objects, in the *equals()* and *hashCode()* methods inherited from *Object*.
+One very common task in developing applications is to compare two different object instances. This can be more challenging than it might first appear. Java does provide a couple of standard methods to help do this between objects, in the *equals()* and *hashCode()* methods inherited from *Object*.
 
 ## The *equals()* method
 
-Object equality refers to the concept of comparing two objects to determine if they are the
-same object. This can mean different things though, because there are two ways to think of "the same object."
+Object equality refers to the concept of comparing two objects to determine if they are the same object. This can mean different things though, because there are two ways to think of "the same object."
 
 ### Reference Equality
 
-In the example code of the previous section where object references were introduced, the
-references for *myCar* and *otherCar* both referenced the same memory address. There was only one object instance. Any change to the state of *myCar* also showed up in *otherCar* because they are the same instance and are therefore considered ***equal***. This is an example of ***reference equality***, meaning the two object variables point to the same address in memory under the hood.  Reference equality is tested using the ***==*** operator.
+In the example code of the previous section where object references were introduced, the references for *myCar* and *otherCar* both referenced the same memory address. There was only one object instance. Any change to the state of *myCar* also showed up in *otherCar* because they are the same instance and are therefore considered ***equal***. This is an example of ***reference equality***, meaning the two object variables point to the same address in memory under the hood.  Reference equality is tested using the ***==*** operator.
 
 <caption><strong>Code Example: Reference equality</strong></caption>
 
@@ -1177,8 +1110,7 @@ The other way two objects can be considered equal involves the *state* of the tw
 
 In the example above using the *Car* object, the constructor initializes three fields, the *make*, the *model*, and the *year* of the car. Assuming those are the only three fields of this object, comparing those three values in two different instances would be used to see if the state of two instances was the same. If all three values were the same, then the two different instances would be considered equal.
 
-Another basic example of this can be seen in playing cards. Assuming there are two decks of
-cards, each deck will hold 52 individual cards with different combinations of suit and rank. Is the *Ace of Spades* from one deck the same as the *Ace of Spades* from the second deck? Both are the *Ace of Spades*, so while they are two different physical cards, they would likely also be considered equal because they are both an *Ace of Spades*.
+Another basic example of this can be seen in playing cards. Assuming there are two decks of cards, each deck will hold 52 individual cards with different combinations of suit and rank. Is the *Ace of Spades* from one deck the same as the *Ace of Spades* from the second deck? Both are the *Ace of Spades*, so while they are two different physical cards, they would likely also be considered equal because they are both an *Ace of Spades*.
 
 The *Object* object includes several methods related to this functionality that through inheritance are available on all Java objects. One of which is the *.equals(Object object)* method. It is common to override this method when creating any new class. This method follows the same basic ***algorithm*** no matter what the class is:
 
@@ -1236,12 +1168,9 @@ Through the ***is-a*** relationship, this will still technically work, but it al
 
 #### Comparing primitive fields
 
-Comparing primitives is done by using the **==** comparison operator, because primitives will
-simply compare the value stored in each field. There *is* one exception to this though, which is comparing non-integer numbers stored as floats and doubles. Both floats and doubles have precision issues in most programming languages due to how floating-point numbers are stored in memory. In other words, ***these numbers aren't guaranteed to be exact***. The way these numbers are stored is described in the ***IEEE 754*** standard.
+Comparing primitives is done by using the **==** comparison operator, because primitives will simply compare the value stored in each field. There *is* one exception to this though, which is comparing non-integer numbers stored as floats and doubles. Both floats and doubles have precision issues in most programming languages due to how floating-point numbers are stored in memory. In other words, ***these numbers aren't guaranteed to be exact***. The way these numbers are stored is described in the ***IEEE 754*** standard.
 
-It may seem odd that a computer cannot store a number precisely, but there are a few reasons
-why. Floating-point numbers are stored in binary, which can't exactly represent many decimal
-fractions. For instance, 0.1 in binary is an infinitely repeating fraction, and there are an infinite number of digits to the right of the decimal place in π. Floats use 32 bits and doubles use 64 bits to represent numbers. This finite storage means they can't represent all real numbers exactly. Different operations on floating-point numbers often introduce ***small rounding errors*** due to the limitations of storage size and binary binary representation.
+It may seem odd that a computer cannot store a number precisely, but there are a few reasons why. Floating-point numbers are stored in binary, which can't exactly represent many decimal fractions. For instance, 0.1 in binary is an infinitely repeating fraction, and there are an infinite number of digits to the right of the decimal place in π. Floats use 32 bits and doubles use 64 bits to represent numbers. This finite storage means they can't represent all real numbers exactly. Different operations on floating-point numbers often introduce ***small rounding errors*** due to the limitations of storage size and binary binary representation.
 
 <caption><strong>Code Example: Comparing real numbers</strong></caption>
 
@@ -1284,8 +1213,7 @@ d1 and d2 are not equal
 This is why it is a very bad idea to use a double or a float to represent money in an application.
 </section>
 
-There are a few ways this can be handled. The easiest and most common way is to choose a
-***threshold of precision***. If the difference between the two numbers is less than this threshold, that difference is ignored as a rounding error and the numbers are considered equal.
+There are a few ways this can be handled. The easiest and most common way is to choose a ***threshold of precision***. If the difference between the two numbers is less than this threshold, that difference is ignored as a rounding error and the numbers are considered equal.
 
 <caption><strong>Code Example: Threshold of precision</strong></caption>
 
@@ -1322,12 +1250,10 @@ else
 ``` 
 
 <section class="callout info">
-This can be useful when you need to determine the ordering of values for sorting, not just
-equality.  Using it this way will be covered in the chapter introducing <b>interfaces</b>.
+This can be useful when you need to determine the ordering of values for sorting, not just equality.  Using it this way will be covered in the chapter introducing <b>interfaces</b>.
 </section>
 
-A third approach is to use the built in Java object *BigDecimal*. Using this object type is
-recommended for precise decimal calculations.
+A third approach is to use the built in Java object *BigDecimal*. Using this object type is recommended for precise decimal calculations.
 
 <caption><strong>Code Example: Using BigDecimal for comparison</strong></caption>
 
@@ -1354,8 +1280,7 @@ Always avoid direct equality comparisons with the == operator for floats and dou
 
 Another method that is inherited from *Object* is *hashCode()*. The *hashCode()* method calculates an integer value that provides a quick representation of the state of an object's instance. All fields used in an *equals()* method should be used when calculating a hashCode result, and vice versa. 
 
-Any object instance with the same state will always return the same integer value for a
-*hashCode()* method call. Two objects with a different state however are ***not guaranteed*** to calculate a different value (called a ***collision***). This provides a shortcut for comparing and retrieving objects in hash-based collections like *HashMap*, *HashSet*, or *HashTable*.
+Any object instance with the same state will always return the same integer value for a *hashCode()* method call. Two objects with a different state however are ***not guaranteed*** to calculate a different value (called a ***collision***). This provides a shortcut for comparing and retrieving objects in hash-based collections like *HashMap*, *HashSet*, or *HashTable*.
 
 ### The hashCode-equals Contract
 
@@ -1472,8 +1397,7 @@ Permitted subclasses of a sealed class must follow these constraints:
 - They must directly extend the sealed class.
 - They must have one of the following modifiers: final (cannot be extended further), sealed (can only be extended by its permitted subclasses), or non-sealed (can be extended by unknown
 subclasses).
-● They must be in the same module as the sealed class (if the sealed class is in a named
-module) or in the same package (if the sealed class is in the unnamed module).
+- They must be in the same module as the sealed class (if the sealed class is in a named module) or in the same package (if the sealed class is in the unnamed module).
 
 ## Final classes
 
