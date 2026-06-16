@@ -18,7 +18,7 @@ In these cases, when a common behavior is needed but there is no common implemen
         Shape <|-- Circle
         Shape <|-- Square
         class Shape {
-            <<abstract>>
+            &lt;&lt;abstract&gt;&gt;
             +area() double
             +perimeter() double
         }
