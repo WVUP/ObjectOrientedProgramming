@@ -9,6 +9,16 @@
 
 One of the biggest advantages of object-oriented programming (OOP) is the ability to leverage inheritance and polymorphism. Inheritance allows more specific types of objects with each new subclass. Conversely, going back up the class hierarchy then each class becomes more generalized. 
 
+## Learning Objectives
+- [Abstract Classes](#abstract-classes) 
+- [Interfaces](#interfaces) 
+- [Multiple Inheritance](#multiple-inheritance) 
+- [Interface Testing](#interface-testing) 
+- [Plugins](#plugins)
+- [Advanced Topics](#advanced-topics)
+
+# Abstract Classes
+
 There are cases where there will be a common, shared behavior but there is no way to have a common, shared implementation. Some examples include a Shape class calculating the area of the shape or the perimeter of the shape. Both a Circle and a Square class would need to have methods to do this, but the actual calculation of the area or perimeter would be different between a Circle and a Square. Another example would be a card game application. All card games need to score the player's hand, but the scoring is done differently in each game. 
 
 In these cases, when a common behavior is needed but there is no common implementation possible, the method in question and the class must be declared as abstract. The abstract class and method are represented in UML Class Diagrams either with the class name and abstract method in *italics*, or like this:
@@ -41,16 +51,6 @@ In these cases, when a common behavior is needed but there is no common implemen
 </figure>
 
 This diagram represents an abstract class, Shape, with two abstract methods. Through inheritance the *Circle* and *Square* class extend *Shape* and implement their own *area()* and *perimeter()* methods.
-
-## Learning Objectives
-- [Abstract Classes](#abstract-classes) 
-- [Interfaces](#interfaces) 
-- [Multiple Inheritance](#multiple-inheritance) 
-- [Interface Testing](#interface-testing) 
-- [Plugins](#plugins)
-- [Advanced Topics](#advanced-topics)
-
-# Abstract Classes
 
 An ***abstract method*** declares a method signature but with no method body. If a class has even one abstract method, the entire class must also be abstract. If a method is abstract and therefore missing an implementation, it's not possible to create an instance of that class. If that method was called, Java wouldn't know what to do! This is why any class with an abstract method makes the entire class an abstract class. A subclass that is not also abstract must override this method and provide an implementation before an object instance can be created. This means that abstract methods cannot be private.
 
@@ -215,7 +215,8 @@ public SuitComparator implements Comparator<Card>
   @Override
   public int compare(Card o1, Card o2)
   {
-    // Assuming Suit is an enum, use the Comparable is using a Generic, which says this must use a class of the type defined inside the <> brackets. In this case, Comparable is being implemented only with Shape objects.
+    // Assuming Suit is an enum, use the Comparable is using a Generic, which says this must use a class of the type defined inside the <> brackets.
+    // In this case, Comparable is being implemented only with Shape objects.
     
     // ordinal integer value for comparison
     return o1.getSuit().ordinal() - o2.getSuit().ordinal();
@@ -312,12 +313,13 @@ public Card implements Comparable<Card>
 } 
 ```
 
-Now, if two cards have the same points, the two will be sorted against each other using the suit when using Comparable. Similarly, if two cards have the same suit, they will be sorted against each other using the points when using the Comparator. 
+Now, if two cards have the same points, the two will be sorted against each other using the suit when using *Comparable*. Similarly, if two cards have the same suit, they will be sorted against each other using the points when using the *Comparator*. 
 
 **Comparable vs Comparator** 
 - The *Comparable* interface can be used to provide a single (natural) way of sorting, whereas the *Comparator* interface is used to provide different ways of sorting collections of the same object 
 - For using *Comparable*, classes need to implement it in the class, but when using *Comparator* a separate class needs to be created 
-- The *Comparable* interface is in *java.lang* package and doesn’t require an import. The *Comparator* interface is in *java.util* package and does require an import 
+    - The *Comparable* interface is in *java.lang* package and doesn’t require an import
+    - The *Comparator* interface is in *java.util* package and does require an import 
 - *Arrays.sort()* and *Collection.sort()* methods automatically uses the *Comparable* interface’s *compareTo()* method of the class
 
 ### Interface Documentation
