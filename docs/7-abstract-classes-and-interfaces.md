@@ -35,12 +35,11 @@ classDiagram
         +area() double
         +perimeter() double
     }
-</div>
 </pre>
 
 <figure>
   <figcaption class="align-center">Figure 7.1: UML of abstract and concrete classes</figcaption>
-</figure><p>
+</figure>
 
 This diagram represents an abstract class, Shape, with two abstract methods. Through inheritance the *Circle* and *Square* class extend *Shape* and implement their own *area()* and *perimeter()* methods.
 
