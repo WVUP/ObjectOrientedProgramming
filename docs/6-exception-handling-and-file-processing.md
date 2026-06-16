@@ -972,7 +972,6 @@ catch(IOException ex)
 }
 ```
 
-
 ### Reading Files with Scanner
 In addition to these approaches, it is also possible to process files using the *Scanner* object. Normally the scanner works with the *System.in* input stream, but it can also work with *File* objects.
 
@@ -1038,6 +1037,10 @@ The term ***serialization*** refers to the process of converting an object’s s
 
 ***Deserialization*** is the reverse process of serialization. It involves reconstructing an object instance from the serialized data. This process allows the recreation of objects after they have been serialized for transmission or storage. The use of serialization and deserialization of application information has several advantages. 
 
+<section class="callout info">
+Java has a native, java-specific way to do serialization and deserialization by converting an object into a byte stream so it can be stored or sent over a network, then rebuilt later. Native Java serialization can be convenient for Java-to-Java communication and lightweight persistence, but it is fragile across class changes and has a history of security risks. Because of these risks, Oracle has publicly stated that removing native object serialization as a long-term goal.
+</section>
+
 Using a standard format such as ***JSON*** or ***XML***, it is possible to exchange application information between different applications. Almost every programming language has at least one library that can understand these formats of data. This is in fact the foundation of web services and web APIs. Being able to store and re-create the state of objects in an application when the application is stopped and restarted is another important capability that serialization and deserialization provide. This type of persistence is important to most information systems. 
 
 The two most common formats of this are JSON and XML. JSON stands for JavaScript Object Notation, and XML stands for Extensible Markup Language. These are two different string formats that both solve the same problem, representing the state of a data structure. Both are human-readable formats that are easy for both humans and machines to work with. Both provide a straightforward mechanism for serialization, allowing the conversion of complex data structures into a format that can be easily stored or transmitted, and then reconstructed back into their original form through deserialization. 
@@ -1047,7 +1050,6 @@ JSON serialization is more lightweight than XML, meaning file formats are simple
 Earlier an example of this using a CSV file was shown. Using a structured markup language such as JSON or XML offers several advantages over this approach. Both JSON and XML support hierarchical and nested structures, allowing for more complex data representation than a CSV file can support. This aligns better with object-oriented programming structures, making it easier to map data to code objects. The order of elements in these documents is also largely irrelevant, which is a significant advantage over CSV and similar flat file formats. 
 
 JSON and XML also support a wider range of data types, including booleans, arrays, numbers, and objects while CSV is limited to strings which the developer must then parse and convert. While CSV and similar formats excel in simplicity and small file size for flat data, JSON and XML offer better flexibility, stronger data typing, and more complex structure, making them more suitable for complex data.
-
 
 ## Adding JSON Support
 In Java, there is no library native to the JDK to handle JSON or XML. There are two good libraries available though, Jackson and GSON. Of the two, Jackson is more widely used and more powerful. Jackson can also work with both JSON and XML, while GSON can only work with JSON documents. Jackson can be added to a project in IntelliJ the same way JUnit is added. Jackson provides three core modules: 
@@ -1333,7 +1335,7 @@ private String holderName;
 These are just a few examples of the available JSON annotations. There are also XML specific annotations.
 
 ## Database Access
-Serialization and deserialization provide a powerful way to add persistence in an application. Like CSV and similar files though, it stores data in plain text files that can be easily manipulated or moved outside of the application. A more common and much more powerful approach to data persistence is to use a relational database. Relational databases enforce data types and data schema, and the database server, often called a Relational Database Management System (RDBMS) will provide a mechanism for authentication and authorization, only allowing the manipulation of the data or its structure by authorized users. Relational databases also perform much faster than serialization and deserialization of plain text files on a hard drive. 
+Serialization and deserialization provide a powerful way to add persistence in an application. Like CSV and similar files though, it stores data in plain text files that can be easily manipulated or moved outside of the application. Another common and much more powerful approach to data persistence is to use a relational database. Relational databases enforce data types and data schema, and the database server, often called a Relational Database Management System (RDBMS) will provide a mechanism for authentication and authorization, only allowing the manipulation of the data or its structure by authorized users. Relational databases also perform much faster than serialization and deserialization of plain text files on a hard drive. 
 
 Java provides the ability to work with relational databases through the JDBC (Java Database Connectivity) package. JDBC provides a standardized way for Java programs to connect to and manipulate data stored in various database management systems. Due to differences in implementation, each RDBMS will have its own implementation of the JDBC interface. This means applications written using JDBC have one interface for database operations that will work with a wide variety of DBMS’s, which allows developers to write database-agnostic code. 
 
