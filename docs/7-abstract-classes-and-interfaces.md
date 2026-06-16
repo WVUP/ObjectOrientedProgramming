@@ -14,24 +14,28 @@ There are cases where there will be a common, shared behavior but there is no wa
 In these cases, when a common behavior is needed but there is no common implementation possible, the method in question and the class must be declared as abstract. The abstract class and method are represented in UML Class Diagrams either with the class name and abstract method in *italics*, or like this:
 
 <pre class="mermaid">
-    classDiagram
-        Shape <|-- Circle
-        Shape <|-- Square
-        class Shape {
-            &lt;&lt;abstract&gt;&gt;
-            +area() double
-            +perimeter() double
-        }
-        class Circle {
-            -radius : double
-            +area() double
-            +perimeter() double
-        }
-        class Square {
-            -sideLength : double
-            +area() double
-            +perimeter() double
-        }
+classDiagram
+    Shape <|-- Circle
+    Shape <|-- Square
+
+    class Shape {
+        &lt;&lt;abstract&gt;&gt;
+        +area() double
+        +perimeter() double
+    }
+
+    class Circle {
+        -radius : double
+        +area() double
+        +perimeter() double
+    }
+
+    class Square {
+        -sideLength : double
+        +area() double
+        +perimeter() double
+    }
+</div>
 </pre>
 
 <figure>
