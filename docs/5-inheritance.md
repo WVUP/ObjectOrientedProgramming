@@ -303,7 +303,7 @@ Since a subclass gets everything in the superclass for free, it is important tha
  */
 public class Student extends Person
 {
-  private ArrayList&lt;Course&gt; transcript;
+  private ArrayList<Course> transcript;
   private Professor advisor;
 
   /**
@@ -325,7 +325,7 @@ public class Student extends Person
 				   Address address, 
 				   char race, 
 				   char gender, 
-				   ArrayList&lt;Course&gt; courses, 
+				   ArrayList<Course> courses, 
 				   Professor advisor)
 	{
 		// First, initialize the *Person* parts of the class
@@ -630,7 +630,7 @@ public class Main
   public static void main(String[] args) 
   {
     // Any object that "is-a" Player can be added to the players list
-    ArrayList&lt;Player&gt; players = new ArrayList&lt;&gt;();
+    ArrayList<Player> players = new ArrayList<>();
     
     Player player = new Player();
     Dealer dealer = new Dealer();
@@ -940,7 +940,7 @@ A ***package*** is a logical organization of related classes into a ***namespace
 ```java 
 package java.util;
 
-public class ArrayList&lt;T&gt;
+public class ArrayList<T>
 {
   ...
 }
