@@ -370,7 +370,8 @@ Is this a problem with interfaces though? Since interfaces have no implementatio
     Interface2 <|.. MyClass
     </pre>
   <figcaption class="align-center">Figure 7.3: Multiple inheritance using interfaces</figcaption>
-</figure><p>
+</figure>
+<br />
 
 This means if two different interfaces happened to declare the same method interface, the subclass override would still provide a clear implementation for Java to call. This means there would be no confusion about which implementation to use. Because of this, it is possible to implement multiple interfaces in Java, giving a form of multiple inheritance.
 
@@ -445,6 +446,7 @@ When a user interacts with the plugin's elements, the plugin code is executed by
   <img class="align-center" src="images/7/intellij_plugin_marketplace.png" alt="The IntelliJ plugin browser showing plugins from the online IntelliJ Plugin Browser">
   <figcaption class="align-center">Figure 7.4: IntelliJ Plugin Browser</figcaption>
 </figure>
+<br />
 
 <section class="callout info">
 Marketplace allows searching for any available plugin. 
