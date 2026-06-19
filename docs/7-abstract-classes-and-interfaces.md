@@ -607,7 +607,7 @@ Java does not have native mixin support the way some other languages do, but the
 
 In comparison, composition is a broader design approach where an object has other objects as fields and delegates work to them using the "has-a" relationship, which keeps boundaries more explicit. Mixins instead add behaviors to classes in Java by leveraging an interface's default method capabilities. Since a class can implement  many interfaces, it is possible to add multiple mixins wherever the mixin behavior might be needed.  
 
-Here is an example of a mixin-style implementation of a logger
+<caption><strong>Code Example: A logger mixin</strong></caption>
 
 ```java
 /**
@@ -753,13 +753,15 @@ Because Java interfaces cannot contain instance fields or constructors in the sa
 
 A class gains logging behavior from the above ```ApplicationLogger``` interface by simply declaring that it implements the interface:
 
+<caption><strong>Code Example: Using the ApplicationLogger mixin</strong></caption>
+
 ```java
 public class StudentService implements ApplicationLogger
 {
     public void processStudent()
     {
-		// ApplicationLogger methods are automatically availabile
-        logInfo("Processing student.");
+      // ApplicationLogger methods are automatically availabile
+      logInfo("Processing student.");
     }
 }
 ```
@@ -769,6 +771,7 @@ Now the *StudentService* class can use any of the ApplicationLogger interface me
 ## Mixins vs. Composition
 
 | Aspect | Mixin | Composition |
+| --- | --- | --- |
 | Relationship | “Adds behavior to this class” | “This object uses other objects” |
 | Visibility | Less explicit; methods may appear magically | More explicit; delegation is visible |
 | Reuse style | Good for shared, orthogonal behavior | Good for modeling parts and collaborators |
@@ -867,3 +870,9 @@ While both composition and inheritance promote code reuse, they have different i
 - Abstract classes can have any access modifier for members, interfaces are implicitly public 
 - Both abstract classes and interfaces are used for abstraction, but abstract classes are typically used when you want to provide a common base implementation, while interfaces are used to define a contract for unrelated classes with a common behavior 
 - A class name is a noun, whereas interface names may be adjectives or nouns
+
+## Alternatives to Inheritance
+- Composition uses other classes as fields and calls methods on those fields instead of inheriting methods from a parent class.
+  - This makes it easy to share behavior outside of an inheritance hierarchy
+- Mixins implement share behaviors using default methods in Java.
+  - Shared behaviors such as logging or serialization can be added to clases without relying on an inheritance hierarchy
