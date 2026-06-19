@@ -444,7 +444,8 @@ When a user interacts with the plugin's elements, the plugin code is executed by
 <figure>
   <img class="align-center" src="images/7/intellij_plugin_marketplace.png" alt="The IntelliJ plugin browser showing plugins from the online IntelliJ Plugin Browser">
   <figcaption class="align-center">Figure 7.4: IntelliJ Plugin Browser</figcaption>
-</figure><p>
+</figure>
+<br />
 
 <section class="callout info">
 Marketplace allows searching for any available plugin. 
