@@ -545,13 +545,13 @@ Writing an application that supports plugins is beyond the scope of this book. F
 
 # Alternatives to Inheritance
 
-Like many things in programming, there are many ways to do the same thing.  Often it comes down to measuring the tradeoffs between different approaches when picking the best solution.  Inheritance offers many advantages in software design, especially with what is possible around polymorphism.  There are often situations where things will not fit into an object hierarchy though, and if inheritance is the only tool available when those things happen either a very convoluted and illogical hierarchy is used or the same code is written out in multiple places.  Neither of those lead to a high-quality codebase.  Fortunately, there are two other ways to solve this problem, *composition* and *mixins*.
+Like many things in programming, there are many ways to do the same thing.  Often it comes down to measuring the tradeoffs between different approaches when picking the best solution.  Inheritance offers many advantages in software design, especially with what is possible around polymorphism.  There are often situations where things will not fit into an object hierarchy though, and if inheritance is the only tool available when those things happen either a very convoluted and illogical hierarchy is used or the same code is written out in multiple places.  Neither of those lead to a high-quality codebase. Fortunately, there are several other ways to solve this problem. Two of the most common are composition and mixin-style behavior.
 
 ## Composition
 
-***Composition*** is an object-oriented design approach where an object has other objects as fields and delegates work to them using the "has-a" relationship instead of using inheritance and the "is-a" relationship.  Classes should always follow the ***Single Responsibility Principle***, meaning a class should have one responsibility, meaning it should have only one reason to change.  This sounds great in theory, but how can complex objects be built that have interwoven responsibilities?  The answer is simple, break them up into several smaller classes that are responsible for one thing, then use them together to create the more complex behavior.  This is known as composition, because a class is *composed* of other classes.
+Classes should ideally follow the ***Single Responsibility Principle*** (SRP), meaning a class should have one primary responsibility and therefore only one reason to change. This sounds great in theory, but how can complex objects be built that have interwoven responsibilities?  The answer is simple, break them up into several smaller classes that are responsible for one thing, then use them together to create the more complex behavior.  This is known as composition, because a class is *composed* of other classes.
 
-Composition is a design technique where a class contains instances of other classes as instance variables. What composition means in plain English is an object will use other objects as fields and they will handle the related behaviors that are needed.  This lets objects in different hierarchies share one implementation of something they may have in common. The containing class is said to be composed of the contained classes, and it uses their behavior through their exposed public API (public methods). In Java, composition is achieved by creating an instance of one class within another class. 
+***Composition*** is an object-oriented design approach where a class contains instances of other classes as instance variables, and delegates work to them using the "has-a" relationship instead of using inheritance and the "is-a" relationship. In plain English, composition means an object contains other objects and relies on them to perform specific tasks. This lets objects in different hierarchies share one implementation of something they may have in common. The containing class is said to be composed of the contained classes, and it uses their behavior through their exposed ***public API*** (public methods). In Java, composition is achieved by creating an instance of one class within another class. 
 
 In this example, the *Car* class is composed partially of the *Motor* class:
 
@@ -573,7 +573,7 @@ class Motor
 ```java
 class Car
 {
-  private Motor motor;
+  private final Motor motor;
   
   Car()
   {
@@ -590,183 +590,53 @@ class Car
 With this structure, the *Motor* class can easily be re-used in any other class, such as a Motorcycle, Boat, Airplane, Bandsaw, Drill Press, etc. without being forced into a class hierarchy.  It would be an amazing stretch of logic to put all of those classes into one object hierarchy just so they could share an implementation of a motor.  Composition solves this problem by moving the definition of a motor into its own class and using the "has-a" relationship instead of the "is-a" relationship to give these other classes the shared behavior.
 
 While both composition and inheritance promote code reuse, they have different implications and tradeoffs: 
-- **Flexibility**: Composition provides more flexibility than inheritance o With composition, you can change the behavior of a class by replacing the composed objects at runtime. With inheritance, the behavior is fixed at compile-time
+- **Flexibility**: Composition provides more flexibility than inheritance. With composition, you can change the behavior of a class by replacing the composed objects at runtime. With inheritance, the behavior is fixed at compile-time
 - **Code Reuse**: Inheritance promotes code reuse through the inheritance hierarchy, while composition allows code reuse by creating instances of existing classes 
 - **Coupling**: Inheritance creates a tight coupling between the subclass and superclass, as changes in the superclass can affect the subclass. Composition promotes loose coupling, as the containing class and contained classes are independent of each other 
 - **Extensibility**: Composition is generally preferred for extensibility, as it allows you to create new classes by combining existing ones, without modifying the existing code 
-- **Polymorphism**: Inheritance has better direct support for polymorphism
+- **Polymorphism**: Both inheritance and composition can participate in polymorphism when interfaces are used
+	- Interfaces often provide more flexible polymorphic designs than inheritance alone, in large part because they focus on what a piece of code needs to do and not on how it is done
 
 ## Mixins
 
-Another approach to sharing behaviors outside of an inheritance hierarchy is known as a *mixin*. ***Mixins*** provide a way to add a reusable bundle of *behavior* to a class, to either extend or add capabilities without relying on inheritance. This is useful when behaviors are not specific to an object type, and might be useful across more than one object in more than one inheritance hierarchy. Some examples would be adding logging or JSON serialization support to a class. With a mixin, behavior is injected into a class, often so the class gains methods as if they were its own. This makes the API feel flatter, but it can also hide where behavior comes from.
+Another approach to sharing behaviors outside of an inheritance hierarchy is known as a *mixin*. ***Mixins*** provide a way to add a reusable bundle of *behavior* to a class without relying on object inheritance and are especially relevant when working with interfaces. Because Java classes can implement multiple interfaces, default methods allow small pieces of reusable behavior to be shared across otherwise unrelated classes. This is useful when behaviors are not specific to an object type, and might be useful across more than one object in more than one inheritance hierarchy. Some examples would be adding logging or JSON serialization support to a class. With a mixin, behavior is injected into a class, often so the class gains methods as if they were its own. 
 
-Java does not have native mixin support the way some other languages do, but the same core capabilities of a mixin can still be achieved using default methods on an interface, which were introduced in Java version 8. 
+Java does not support true mixins directly. However, interface default methods, which were introduced in Java version 8, can be used to achieve many mixin-style behaviors.
 
 > The term mixin comes from the phrase “mix in,” meaning to combine something into something else. 
 > In software, it refers to code meant to be “mixed into” a class or object to add behavior without using a full inheritance relationship.
 
 In comparison, composition is a broader design approach where an object has other objects as fields and delegates work to them using the "has-a" relationship, which keeps boundaries more explicit. Mixins instead add behaviors to classes in Java by leveraging an interface's default method capabilities. Since a class can implement  many interfaces, it is possible to add multiple mixins wherever the mixin behavior might be needed.  
 
-<caption><strong>Code Example: A logger mixin</strong></caption>
+<caption><strong>Code Example: A mixin for printing any message as a banner</strong></caption>
 
 ```java
-/**
- * Mixin-style logging interface that provides a Logger for the implementing
- * class and convenience logging methods.
- *
- * @author Charles Almond
- * @version 2026.04.02.02
- */
-public interface ApplicationLogger
+public interface Printable
 {
-    // Cache of loggers by runtime class.
-	// The ConcurrentHashMap is thread-safe, so if multiple classes try to use it at 
-	//   the same time there will not be a conflict.
-    Map<Class<?>, Logger> LOGGER_CACHE = new ConcurrentHashMap<Class<?>, Logger>();
-
-    /**
-     * Triggers one-time logging initialization when the interface is loaded.
-	 *   Basically, this is our stand-in for a constructor.
-     */
-    boolean LOGGING_INITIALIZED = initializeLogging();
-
-    /**
-     * Returns a logger for the implementing class.
-     *
-     * @return a Logger configured for the runtime class
-     */
-    default Logger getLogger()
+    default void printBanner(String message)
     {
-		// Figure out what class is asking for a logger
-		// This is the key in the LOGGER_CACHE map.
-		//	The logger for that class is the value.  
-        Class<?> clazz = this.getClass();
-
-		// The computeIfAbsent method checks whether a key already has a value in the map.
-		//  If the value (the logger for this class) is present, it simply returns the value
-		//	If not, it computes one with the provided function, stores it in the map, then returns it.
-		//		This essentially is creating a "lazy loader" that creates the logger the first time it is needed.
-        return LOGGER_CACHE.computeIfAbsent(
-            clazz,
-			c -> Logger.getLogger(c.getName()));
-    }
-
-    /**
-     * Logs an INFO level message.
-     *
-     * @param message the message to log
-     */
-    default void logInfo(String message)
-    {
-        getLogger().info(message);
-    }
-	
-	// Repeat the above method for the following log levels
-	//	- getLogger().warning
-	// 	- getLogger().severe (For errors)
-	//	- getLogger().fine (For debug)
-	//	- getLogger().finer (For detailed debug)
-	//	- getLogger().finest (For very detailed debug)
-
-    /**
-     * Logs a SEVERE level message with an exception.
-     *
-     * @param message the message to log
-     * @param throwable the exception or error to include
-     */
-    default void logError(String message, Throwable throwable)
-    {
-        getLogger().log(Level.SEVERE, message, throwable);
-    }
-
-	// Repeat for logDebug using log() with Level.FINE
-    
-    /**
-     * Logs a message at the specified level.
-     *
-     * @param level the logging level
-     * @param message the message to log
-     */
-    default void log(Level level, String message)
-    {
-        getLogger().log(level, message);
-    }
-
-    /**
-     * Logs a message and throwable at the specified level.
-     *
-     * @param level the logging level
-     * @param message the message to log
-     * @param throwable the exception or error to include
-     */
-    default void log(Level level, String message, Throwable throwable)
-    {
-        getLogger().log(level, message, throwable);
-    }
-
-    /**
-     * Loads logging.properties from the classpath and configures the logging
-     * system once when this interface is first loaded.
-     *
-     * @return true after initialization attempt completes
-     */
-    static boolean initializeLogging()
-    {
-        try (InputStream inputStream =
-                ApplicationLogger.class.getClassLoader()
-				.getResourceAsStream("logging.properties")) // This will work inside a JAR file
-        {
-            if (inputStream != null)
-            {
-                LogManager.getLogManager().readConfiguration(inputStream);
-            }
-            else
-            {
-                System.err.println("logging.properties not found on classpath.");
-            }
-        }
-        catch (Exception exception)
-        {
-            exception.printStackTrace();
-        }
-
-        return true;
+        System.out.println("=== " + message + " ===");
     }
 }
 ```
 
-This interface provides:
-
-- One-time loading of `logging.properties` from the classpath, so it will work even in a JAR file
-  - There must be a `logging.properties` file in the project or in the JAR.
-- A logger tied to the runtime class that extends the interface
-- Convenience methods for common log levels
-- A simple pattern that behaves like a mixin
-
-Because Java interfaces cannot contain instance fields or constructors in the same way abstract classes can, this version uses:
-
-- A shared static logger cache
-- Default methods for reusable logging behavior
-- A static initialization method to configure the logging subsystem
+This mixin provides a reusable method for any class to print a message that is automatically wrapped with ```=== ``` before the message and ``` ===``` after the message, making it clear in the output that this is a banner message and likely labeling a section of the output.  
 
 ### Using an interface with mixin-style behavior
 
-A class gains logging behavior from the above ```ApplicationLogger``` interface by simply declaring that it implements the interface:
-
-<caption><strong>Code Example: Using the ApplicationLogger mixin</strong></caption>
+Any class that implements this interface will now have the printBanner method available in the class.  An example of using this in a *StudentService* class would look like this:
 
 ```java
-public class StudentService implements ApplicationLogger
+public class StudentService implements Printable
 {
     public void processStudent()
     {
-      // ApplicationLogger methods are automatically availabile
-      logInfo("Processing student.");
+        printBanner("Processing Student");
     }
 }
 ```
 
-Now the *StudentService* class can use any of the ApplicationLogger interface methods to log messages without having to set up anything related to logging.  The logging behavior is completely  encapsulated in the *ApplicationLogger* interface. Any other class, no matter what its inheritance hierarchy is, could add logging capabilities as well by simply adding the ```implements ApplicationLogger``` statement to the end of their class declaration. 
+Now the *StudentService* class can print several banner messages without having to code the leading and trailing markers each time. Any other class, no matter what its inheritance hierarchy is, could add the exact same capabilities as well by simply adding the ```implements Printable``` statement to the end of their class declaration. 
 
 ## Mixins vs. Composition
 
@@ -782,7 +652,9 @@ Mixins work well for cross-cutting features that you want to stamp onto many cla
 
 Composition is usually better when the behavior is a real collaborator with its own state or lifecycle, such as a PaymentProcessor used by an OrderService. It scales better for complex systems because each piece can be understood, tested, and replaced independently.
 
-Use a mixin when you want to add capability; use composition when you want to model a part-whole relationship or keep dependencies explicit. In many codebases, composition is the safer default, while mixins are a targeted tool for small reusable behavior.
+> ***Rule of Thumb***
+> Use a mixin when you want to add capability; use composition when you want to model a part-whole relationship or keep dependencies explicit.
+> In many codebases, composition is the safer default, while mixins are a targeted tool for small reusable behavior.
 
 # Advanced Topics
 
@@ -841,7 +713,7 @@ While both composition and inheritance promote code reuse, they have different i
 - **Code Reuse**: Inheritance promotes code reuse through the inheritance hierarchy, while composition allows code reuse by creating instances of existing classes 
 - **Coupling**: Inheritance creates a tight coupling between the subclass and superclass, as changes in the superclass can affect the subclass. Composition promotes loose coupling, as the containing class and contained classes are independent of each other 
 - **Extensibility**: Composition is generally preferred for extensibility, as it allows you to create new classes by combining existing ones, without modifying the existing code 
-- **Polymorphism**: Inheritance has better direct support for polymorphism
+- **Polymorphism**: Inheritance supports polymorphism, but interfaces often provide more flexible polymorphic designs
 
 # Summary
 
