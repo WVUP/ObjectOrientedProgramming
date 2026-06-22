@@ -15,6 +15,7 @@ One of the biggest advantages of object-oriented programming (OOP) is the abilit
 - [Multiple Inheritance](#multiple-inheritance) 
 - [Interface Testing](#interface-testing) 
 - [Plugins](#plugins)
+- [Alternatives to Inheritance](#alternatives-to-inheritance)
 - [Advanced Topics](#advanced-topics)
 
 # Abstract Classes
@@ -655,6 +656,8 @@ Composition is usually better when the behavior is a real collaborator with its 
 > ***Rule of Thumb***
 > Use a mixin when you want to add capability; use composition when you want to model a part-whole relationship or keep dependencies explicit.
 > In many codebases, composition is the safer default, while mixins are a targeted tool for small reusable behavior.
+
+Inheritance is one of the most powerful features of object-oriented programming, but it is not the only way to share behavior between classes. Professional developers often prefer interfaces and composition because they create designs that are easier to extend, test, and maintain. As you continue learning software design, remember that inheritance is *a tool*, not *a goal*. The best solution is the one that models the problem clearly while keeping the code flexible and understandable.
 
 # Advanced Topics
 
