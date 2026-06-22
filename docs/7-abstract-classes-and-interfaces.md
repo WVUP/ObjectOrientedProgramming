@@ -546,7 +546,7 @@ Writing an application that supports plugins is beyond the scope of this book. F
 
 # Alternatives to Inheritance
 
-Like many things in programming, there are many ways to do the same thing.  Often it comes down to measuring the tradeoffs between different approaches when picking the best solution.  Inheritance offers many advantages in software design, especially with what is possible around polymorphism.  There are often situations where things will not fit into an object hierarchy though, and if inheritance is the only tool available when those things happen either a very convoluted and illogical hierarchy is used or the same code is written out in multiple places.  Neither of those lead to a high-quality codebase. Fortunately, there are several other ways to solve this problem. Two of the most common are composition and mixin-style behavior.
+Like many things in life, there are many ways to do the same thing in programming.  Often it comes down to measuring the tradeoffs between different approaches when picking the best solution.  Inheritance offers many advantages in software design, especially with what is possible around polymorphism.  There are often situations where things will not fit into an object hierarchy though, and if inheritance is the only tool available when those things happen either a very convoluted and illogical hierarchy is used or the same code is written out in multiple places.  Neither of those lead to a high-quality codebase. Fortunately, there are several other ways to solve this problem. Two of the most common are composition and mixin-style behavior.
 
 ## Composition
 
