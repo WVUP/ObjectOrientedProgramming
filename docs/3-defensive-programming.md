@@ -525,7 +525,7 @@ Methods that might throw exceptions must declare this using the ***throws*** key
 <figure>
   <img class="align-center" src="https://computing.wvup.edu/bookstack/uploads/images/gallery/2026-05/image-1779216254653.png" alt="">
   <figcaption class="align-center">Figure 4.1: Method header format with throws</figcaption>
-</figure><p>
+</figure>
 
 Any client class code using this object and method would wrap the call to *calculateAverage()* in a try block, and in the catch block would handle the error. The exception object passed to the catch block would have the message "List is null or empty" in this example, which is available by calling the Exception parameter's *getMessage()* method. 
 
