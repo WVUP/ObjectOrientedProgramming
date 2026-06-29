@@ -17,6 +17,7 @@ One of the biggest advantages of object-oriented programming (OOP) is the abilit
 - [Plugins](#plugins)
 - [Alternatives to Inheritance](#alternatives-to-inheritance)
 - [Advanced Topics](#advanced-topics)
+- [Summary](#summary)
 
 # Abstract Classes
 
