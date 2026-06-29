@@ -9,5 +9,5 @@
 - [Inheritance](https://wvup.github.io/ObjectOrientedProgramming/5-inheritance)
 - [Exception Handling and File Processing](https://wvup.github.io/ObjectOrientedProgramming/6-exception-handling-and-file-processing)
 - [Abstract Classes and Interfaces](https://wvup.github.io/ObjectOrientedProgramming/7-abstract-classes-and-interfaces)
-- [Graphical User Interfaces](#https://wvup.github.io/ObjectOrientedProgramming/8-graphical-user-interfaces)
-- [Application Deployment](#https://wvup.github.io/ObjectOrientedProgramming/9-application-deployment)
+- [Graphical User Interfaces](https://wvup.github.io/ObjectOrientedProgramming/8-graphical-user-interfaces)
+- [Application Deployment](https://wvup.github.io/ObjectOrientedProgramming/9-application-deployment)
