@@ -670,54 +670,6 @@ The other common use of a marker interface is to provide metadata about a class.
 Annotations are often used as an alternative to marker interfaces for providing metadata. Annotations can provide more flexibility and additional information compared to marker interfaces.
 </section>
 
-## Composition
-Inheritance is a key feature of object-oriented programming, but it is not the only way to achieve clean code reuse. An alternative approach is called ***Composition***. 
-
-Composition is a design technique where a class contains instances of other classes as instance variables. The containing class is said to be composed of the contained classes, and it uses their behavior through their exposed public API (public methods). In Java, composition is achieved by creating an instance of one class within another class. 
-
-In this example, the Car class is composed partially of the Engine class:
-
-<caption><strong>Code Example: Engine class definition</strong></caption>
-
-```java
-class Engine
-{
-  ...
-  void start()
-  {
-    System.out.println("Engine started.");
-  }
-} 
-```
-
-<caption><strong>Code Example: Car partial composition</strong></caption>
-
-```java
-class Car
-{
-  private Engine engine;
-  
-  Car()
-  {
-    engine = new Engine();
-  }
-  
-  void startCar()
-  {
-    engine.start();
-  }
-} 
-```
-
-With this structure, the Engine class can easily be re-used in any other class, such as a Motorcycle, Boat, Airplane, Bandsaw, Drill Press, etc. without being forced into a class hierarchy. 
-
-While both composition and inheritance promote code reuse, they have different implications and tradeoffs: 
-- **Flexibility**: Composition provides more flexibility than inheritance o With composition, you can change the behavior of a class by replacing the composed objects at runtime. With inheritance, the behavior is fixed at compile-time
-- **Code Reuse**: Inheritance promotes code reuse through the inheritance hierarchy, while composition allows code reuse by creating instances of existing classes 
-- **Coupling**: Inheritance creates a tight coupling between the subclass and superclass, as changes in the superclass can affect the subclass. Composition promotes loose coupling, as the containing class and contained classes are independent of each other 
-- **Extensibility**: Composition is generally preferred for extensibility, as it allows you to create new classes by combining existing ones, without modifying the existing code 
-- **Polymorphism**: Inheritance supports polymorphism, but interfaces often provide more flexible polymorphic designs
-
 # Summary
 
 ## Abstract Class Summary
