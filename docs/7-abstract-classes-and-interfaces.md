@@ -670,6 +670,14 @@ The other common use of a marker interface is to provide metadata about a class.
 Annotations are often used as an alternative to marker interfaces for providing metadata. Annotations can provide more flexibility and additional information compared to marker interfaces.
 </section>
 
+
+## Composition over Inheritance
+Inheritance is a key feature of object-oriented programming with many advantages, but it is not the only way to achieve clean code reuse. Two other approaches exist, composition and mixins.  
+
+Inheritance still makes sense when there is a true “is-a” relationship and the base class is specifically designed for extension. In practice, though, composition is the safer default for most reusable object-oriented design.
+
+Since a design using composition makes classes more flexible, less tightly coupled, and easier to change without breaking existing code, many experienced developers and software engineers favor composition over inheritance. It also tends to improve testability and keeps responsibilities separated into smaller, focused components.
+
 # Summary
 
 ## Abstract Class Summary
